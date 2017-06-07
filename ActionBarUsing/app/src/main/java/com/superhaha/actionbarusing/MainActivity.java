@@ -25,8 +25,6 @@ public class MainActivity extends SherlockActivity {
             @Override
             public boolean onNavigationItemSelected(int itemPosition, long itemId) {
                 Toast.makeText(MainActivity.this, "select" + itemPosition,Toast.LENGTH_SHORT).show();
-
-
                 return false;
             }
         });
