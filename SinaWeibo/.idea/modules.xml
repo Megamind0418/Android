@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SinaWeibo.iml" filepath="$PROJECT_DIR$/SinaWeibo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SinaWeibo.iml" filepath="$PROJECT_DIR$/SinaWeibo.iml" />
       <module fileurl="file://$PROJECT_DIR$/Weibo/Weibo.iml" filepath="$PROJECT_DIR$/Weibo/Weibo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Weibo/Weibo.iml" filepath="$PROJECT_DIR$/Weibo/Weibo.iml" />
     </modules>
   </component>
 </project>

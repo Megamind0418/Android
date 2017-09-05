@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/Users/superhaha/ZhangAndroid/MyApplication/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/superhaha/ZhangAndroid/MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/superhaha/ZhangAndroid/MyApplication/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/superhaha/ZhangAndroid/MyApplication/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/superhaha/ZhangAndroid/SinaWeibo/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/superhaha/ZhangAndroid/SinaWeibo/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/superhaha/ZhangAndroid/SinaWeibo/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/superhaha/ZhangAndroid/SinaWeibo/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    }
+]

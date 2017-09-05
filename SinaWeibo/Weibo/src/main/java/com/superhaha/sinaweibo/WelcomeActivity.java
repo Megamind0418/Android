@@ -1,8 +1,10 @@
 package com.superhaha.sinaweibo;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -40,6 +42,31 @@ public class WelcomeActivity extends Activity {
         objectAnimator.setDuration(4000);
 //        启动动画
         objectAnimator.start();
+
+//        给动画添加监听
+//        牵涉到设计架构中：适配器模式
+        objectAnimator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+//              跳转页面
+                startActivity(new Intent(WelcomeActivity.this,GuideActivity.class));
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
     }
 
     private void initLogoAnimator(){
