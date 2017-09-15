@@ -2,6 +2,7 @@ package com.superhaha.sinaweibo;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,14 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.superhaha.sinaweibo.views.CircleIndicator;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
+
 public class GuideActivity extends Activity {
-//      存放图片编号列表
+    //      存放图片编号列表
     private List<Integer> imageList;
-//      存放具体的视图列表
+    //      存放具体的视图列表
     private List<ImageView> imageViewList;
 
     @Override
@@ -34,7 +40,7 @@ public class GuideActivity extends Activity {
 
     }
 
-    private void initImageList(){
+    private void initImageList() {
         imageList = new ArrayList<>();
 //        添加图片
         imageList.add(R.mipmap.surprise_background_default);
@@ -43,7 +49,7 @@ public class GuideActivity extends Activity {
         imageList.add(R.mipmap.surprise_background_window);
 
         imageViewList = new ArrayList<>();
-        for (Integer idRes : imageList){
+        for (Integer idRes : imageList) {
 //            创建显示图片的视图
             ImageView imageView = new ImageView(this);
             imageViewList.add(imageView);
@@ -52,7 +58,46 @@ public class GuideActivity extends Activity {
 
     private void initView() {
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
-        viewPager.setAdapter(new GuideAdapter(this,imageViewList,imageList));
+        viewPager.setAdapter(new GuideAdapter(this, imageViewList, imageList));
+//                3.2 配置分页页码
+//      获取页码视图
+//        CircleIndicator:第三方组件
+        CircleIndicator circleIndicator = (CircleIndicator) findViewById(R.id.circle_indicator);
+//        绑定页码
+        circleIndicator.setViewPager(viewPager);
+
+//        3.3 添加跳转功能
+//        监听是否滑动到最后一页
+        final TextView tv_guide = (TextView) findViewById(R.id.tv_guide);
+        tv_guide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GuideActivity.this,MainActivity.class));
+            }
+        });
+
+        //设置进入主页显示按钮
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == imageList.size() - 1) {
+                    tv_guide.setVisibility(View.VISIBLE);
+                } else {
+                    tv_guide.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     //    Adapter
@@ -75,28 +120,32 @@ public class GuideActivity extends Activity {
             return imageViewList.size();
         }
 
-//        当前页
+        //        当前页
         @Override
         public int getItemPosition(Object object) {
             return super.getItemPosition(object);
         }
 
-//        当前的分页是不是一个view
+        //        当前的分页是不是一个view
         @Override
         public boolean isViewFromObject(View view, Object object) {
             return view == object;
         }
 
-//        创建和绑定每一个分页
+        //        创建和绑定每一个分页
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             ImageView imageView = imageViewList.get(position);
+//            绑定图片资源
             imageView.setImageResource(imageList.get(position));
-            container.addView(imageView,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+//            填充视图,超过的部分截取掉---保持图片原样不变形
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+//            绑定视图
+            container.addView(imageView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return imageView;
         }
 
-//        销毁
+        //        销毁
         @Override
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView(imageViewList.get(position));
