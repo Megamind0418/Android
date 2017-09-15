@@ -12,5 +12,22 @@
         android:layout_height="match_parent"
         />
 
+    <com.superhaha.sinaweibo.views.CircleIndicator
+        android:id="@+id/circle_indicator"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:id="@+id/tv_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="进入主页"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        android:layout_marginBottom="80dp"/>
 
 </FrameLayout>
