@@ -39,7 +39,7 @@ public class WelcomeActivity extends Activity {
 //        第四个参数---动画结束时候的位置,或者说状态
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(iv_slogan, "alpha", 0.2f, 1.0f);
 //        动画的时间
-        objectAnimator.setDuration(4000);
+        objectAnimator.setDuration(2000);
 //        启动动画
         objectAnimator.start();
 
@@ -78,7 +78,7 @@ public class WelcomeActivity extends Activity {
         ObjectAnimator objectAnimatorY = ObjectAnimator.ofFloat(iv_logo, "scaleY", 1.0f, 1.2f, 1.0f);
 //        通过动画集合组合并且执行动画
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.setDuration(4000);
+        animatorSet.setDuration(2000);
 //        这两个动画同时执行
         animatorSet.play(objectAnimatorX).with(objectAnimatorY);
         animatorSet.start();
