@@ -5,7 +5,7 @@
     android:id="@+id/rl_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.superhaha.sinaweibo.MainActivity"
+    tools:context="com.superhaha.sinaweibo.pro.MainActivity"
     android:background="@mipmap/welcome_android">
 
     <ImageView

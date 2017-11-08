@@ -1,17 +1,15 @@
-package com.superhaha.sinaweibo;
+package com.superhaha.sinaweibo.pro;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.View;
 import android.widget.ImageView;
 
-import static com.superhaha.sinaweibo.R.id.rl_bg;
+import com.superhaha.sinaweibo.R;
 
 /**
  * 程序入口
