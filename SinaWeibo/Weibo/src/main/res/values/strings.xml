@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">SinaWeiBo</string>
+
+    <string name="tabbar_home_text">首页</string>
+    <string name="tabbar_message_text">消息</string>
+    <string name="tabbar_discover_text">发现</string>
+    <string name="tabbar_profile_text">我</string>
 </resources>
