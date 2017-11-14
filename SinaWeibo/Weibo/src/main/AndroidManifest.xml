@@ -20,7 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".pro.MainActivity" />
+        <activity android:name=".pro.MainActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity
             android:name=".pro.GuideActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" />

@@ -1,11 +1,13 @@
 package com.superhaha.sinaweibo.pro;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
+import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TextView;
 import com.superhaha.sinaweibo.R;
 import com.superhaha.sinaweibo.pro.discover.view.DiscoverFragment;
 import com.superhaha.sinaweibo.pro.home.view.HomeFragment;
@@ -23,19 +25,20 @@ public class MainActivity extends AppCompatActivity {
 
     //    保存Tab页基本信息
     private List<TabItem> tabItemList;
-    private View viewIndicator
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initTabItemList();
+        initTabView();
     }
 
     //    初始化Tab页基本信息
     private void initTabItemList() {
         this.tabItemList = new ArrayList<>();
-        this.tabItemList.add(new TabItem(R.mipmap.tabbar_home, R.mipmap.tabbar_home_highlighted, R.string.tabbar_home_text, HomeFragment.class));
+        this.tabItemList.add(new TabItem(R.mipmap.tabbar_home,R.mipmap.tabbar_home_highlighted,R.string.tabbar_home_text,HomeFragment.class));
         this.tabItemList.add(new TabItem(R.mipmap.tabbar_message_center, R.mipmap.tabbar_message_center_highlighted, R.string.tabbar_message_text, MessageFragment.class));
         this.tabItemList.add(new TabItem(R.drawable.tabbar_compose_button, R.drawable.tabbar_compose_button_highlighted, 0, PublishFragment.class));
         this.tabItemList.add(new TabItem(R.mipmap.tabbar_discover, R.mipmap.tabbar_discover_highlighted, R.string.tabbar_discover_text, DiscoverFragment.class));
@@ -54,7 +57,11 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < tabItemList.size(); i++) {
             TabItem tabItem = tabItemList.get(i);
             //创建Tab
-            fragmentTabHost.newTabSpec(tabItem.getTabText().)
+            TabHost.TabSpec tabSpec = fragmentTabHost.newTabSpec(tabItem.getTabText()).setIndicator(tabItem.getTabindicator());
+//                    添加Fragment
+            fragmentTabHost.addTab(tabSpec,tabItem.getFragmentClass(),tabItem.getBundle());
+//            给Tab设置背景
+            fragmentTabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.tabbar_bottom_bg));
         }
     }
 
@@ -66,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
         private Class<? extends Fragment> fragmentClass;//tab对应的Fragment
         private Bundle bundle;//Fragment对应的数据(例如：下标)
 
+        private View viewIndicator;
+        private ImageView iv_tab;
+        private TextView tv_tab;
+
         public TabItem(int imageNormal, int imagePress, int tabTextRes, Class<? extends Fragment> fragmentClass) {
             this.imageNormal = imageNormal;
             this.imagePress = imagePress;
@@ -74,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public Bundle getBundle() {
+            if (bundle == null) {
+                bundle = new Bundle();
+                bundle.putInt("tabTextRes",tabTextRes);
+            }
             return bundle;
         }
 
@@ -84,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             return getResources().getString(tabTextRes);
         }
 
-        public Class<? extends Fragment> getFragmen1tClass() {
+        public Class<? extends Fragment> getFragmentClass() {
             return fragmentClass;
         }
 
@@ -100,13 +115,27 @@ public class MainActivity extends AppCompatActivity {
             return tabTextRes;
         }
 
+
+
         public View getTabindicator() {
             //创建Tab视图
             if (viewIndicator == null) {
-                viewIndicator = getLayoutInflater().inflate(R.layout.tabbar_indicator, null);
+                int layoutId = 0;
+                //判断加载哪一个布局文件
                 if (this.tabTextRes <= 0) {
-
+                    layoutId = R.layout.tabbar_publish_indicator;
+                } else {
+                    layoutId = R.layout.tabbar_indicator;
                 }
+                viewIndicator = getLayoutInflater().inflate(layoutId, null);
+                iv_tab = (ImageView) viewIndicator.findViewById(R.id.iv_tab);
+                if (this.tabTextRes > 0) {
+                    tv_tab = (TextView) viewIndicator.findViewById(R.id.tv_tab);
+                    tv_tab.setText(getTabText());
+                }
+//                绑定默认的资源
+                iv_tab.setImageResource(imageNormal);
+
             }
             return viewIndicator;
         }
