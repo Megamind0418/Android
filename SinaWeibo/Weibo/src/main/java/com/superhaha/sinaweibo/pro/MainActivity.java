@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+
 import com.superhaha.sinaweibo.R;
 import com.superhaha.sinaweibo.pro.discover.view.DiscoverFragment;
 import com.superhaha.sinaweibo.pro.home.view.HomeFragment;
@@ -21,7 +22,7 @@ import java.util.List;
 * Tab页
 * */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements TabHost.OnTabChangeListener {
 
     //    保存Tab页基本信息
     private List<TabItem> tabItemList;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     //    初始化Tab页基本信息
     private void initTabItemList() {
         this.tabItemList = new ArrayList<>();
-        this.tabItemList.add(new TabItem(R.mipmap.tabbar_home,R.mipmap.tabbar_home_highlighted,R.string.tabbar_home_text,HomeFragment.class));
+        this.tabItemList.add(new TabItem(R.mipmap.tabbar_home, R.mipmap.tabbar_home_highlighted, R.string.tabbar_home_text, HomeFragment.class));
         this.tabItemList.add(new TabItem(R.mipmap.tabbar_message_center, R.mipmap.tabbar_message_center_highlighted, R.string.tabbar_message_text, MessageFragment.class));
         this.tabItemList.add(new TabItem(R.drawable.tabbar_compose_button, R.drawable.tabbar_compose_button_highlighted, 0, PublishFragment.class));
         this.tabItemList.add(new TabItem(R.mipmap.tabbar_discover, R.mipmap.tabbar_discover_highlighted, R.string.tabbar_discover_text, DiscoverFragment.class));
@@ -59,10 +60,28 @@ public class MainActivity extends AppCompatActivity {
             //创建Tab
             TabHost.TabSpec tabSpec = fragmentTabHost.newTabSpec(tabItem.getTabText()).setIndicator(tabItem.getTabindicator());
 //                    添加Fragment
-            fragmentTabHost.addTab(tabSpec,tabItem.getFragmentClass(),tabItem.getBundle());
+            fragmentTabHost.addTab(tabSpec, tabItem.getFragmentClass(), tabItem.getBundle());
 //            给Tab设置背景
             fragmentTabHost.getTabWidget().getChildAt(i).setBackgroundColor(getResources().getColor(R.color.tabbar_bottom_bg));
+            fragmentTabHost.setOnTabChangedListener(this);
+            //设置默认选中Tab
+            if (i == 0) {
+                tabItem.setCheckek(true);
+            }
         }
+    }
+
+    @Override
+    public void onTabChanged(String tabId) {
+//        通过循环重置样式
+    for (int i = 0;i<tabItemList.size();i++) {
+        TabItem tabItem = tabItemList.get(i);
+        if (tabItem.getTabText().equals(tabId)) {
+            tabItem.setCheckek(true);
+        } else {
+            tabItem.setCheckek(false);
+        }
+    }
     }
 
     //    采用OO设计思想
@@ -87,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         public Bundle getBundle() {
             if (bundle == null) {
                 bundle = new Bundle();
-                bundle.putInt("tabTextRes",tabTextRes);
+                bundle.putInt("tabTextRes", tabTextRes);
             }
             return bundle;
         }
@@ -115,7 +134,25 @@ public class MainActivity extends AppCompatActivity {
             return tabTextRes;
         }
 
+        //重置tab样式
+        public void setCheckek(boolean isChecked) {
+            if (iv_tab != null) {
+                if (isChecked) {
+                    iv_tab.setImageResource(imagePress);
+                } else {
+                    iv_tab.setImageResource(imageNormal);
+                }
+            }
 
+            if (tv_tab != null) {
+                if (isChecked) {
+                    tv_tab.setTextColor(getResources().getColor(R.color.tabbar_text_press_color));
+                } else {
+                    tv_tab.setTextColor(getResources().getColor(R.color.tabbar_text_normal_color));
+
+                }
+            }
+        }
 
         public View getTabindicator() {
             //创建Tab视图

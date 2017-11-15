@@ -13,7 +13,7 @@
     <color name="app_text_orange_color">#FF8200</color>
     <color name="app_text_orange_deep_color">#E07604</color>
 
-    <color name="tabbar_text_press_color">@color/app_text_orange_color</color>
+    <color name="tabbar_text_press_color">#FF8200</color>
     <color name="tabbar_text_normal_color">#585858</color>
 
     <color name="tabbar_compose_normal_color">@color/app_text_orange_color</color>
