@@ -14,7 +14,7 @@ import com.superhaha.sinaweibo.pro.discover.view.DiscoverFragment;
 import com.superhaha.sinaweibo.pro.home.view.HomeFragment;
 import com.superhaha.sinaweibo.pro.message.view.MessageFragment;
 import com.superhaha.sinaweibo.pro.publish.view.PublishFragment;
-import com.superhaha.sinaweibo.pro.user.view.UserFragment;
+import com.superhaha.sinaweibo.pro.user.view.impl.UserFragment;
 
 import java.util.ArrayList;
 import java.util.List;

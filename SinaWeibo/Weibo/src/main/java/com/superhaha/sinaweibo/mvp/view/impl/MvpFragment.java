@@ -12,7 +12,7 @@ import com.superhaha.sinaweibo.mvp.view.MvpView;
  * Created by Administrator on 2017/11/6.
  */
 
-public abstract class MvpFragment<P extends MvpPresenter>extends Fragment implements MvpView {
+public abstract class MvpFragment<P extends MvpPresenter,V extends MvpView>extends Fragment  {
     private P presenter;
 
     @Override
@@ -20,11 +20,13 @@ public abstract class MvpFragment<P extends MvpPresenter>extends Fragment implem
         super.onActivityCreated(savedInstanceState);
         this.presenter = bindPresenter();
         if (this.presenter != null) {
-            this.presenter.attachView(this);
+            this.presenter.attachView(bindView());
         }
     }
 
     public abstract P bindPresenter();
+
+    public abstract V bindView();
 
     @Override
     public void onDestroy() {

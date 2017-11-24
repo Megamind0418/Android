@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.superhaha.sinaweibo.mvp.presenter.MvpPresenter;
+import com.superhaha.sinaweibo.mvp.view.MvpView;
 import com.superhaha.sinaweibo.mvp.view.impl.MvpFragment;
 import com.superhaha.sinaweibo.pro.base.presenter.BasePresenter;
 
@@ -14,7 +15,7 @@ import com.superhaha.sinaweibo.pro.base.presenter.BasePresenter;
  * Created by Administrator on 2017/11/7.
  */
 
-public abstract class BaseFragment<P extends BasePresenter> extends MvpFragment<P> {
+public abstract class BaseFragment<P extends BasePresenter,V extends MvpView> extends MvpFragment<P,V> {
     //我们自己的Fragment需要缓存视图
     private View contentView;//缓存视图
     private boolean isInit;
@@ -63,6 +64,11 @@ public abstract class BaseFragment<P extends BasePresenter> extends MvpFragment<
             this.isInit = true;
             initData();
         }
+    }
+
+    @Override
+    public V bindView() {
+        return null;
     }
 
     public abstract int bindLayoutId();

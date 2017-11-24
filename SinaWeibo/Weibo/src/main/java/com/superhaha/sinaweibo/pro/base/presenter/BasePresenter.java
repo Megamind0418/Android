@@ -20,4 +20,8 @@ public abstract class BasePresenter<V extends MvpView> extends MvpBasePresenter<
         return context;
     }
 
+    public interface OnUIThreadListener<T>{
+        public void onResult(T result, String errorMessage);
+    }
+
 }

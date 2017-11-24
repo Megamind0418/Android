@@ -4,6 +4,7 @@ import android.view.View;
 
 import com.superhaha.sinaweibo.R;
 import com.superhaha.sinaweibo.pro.base.view.BaseFragment;
+import com.superhaha.sinaweibo.pro.base.view.BaseView;
 import com.superhaha.sinaweibo.pro.discover.presenter.DiscoverPresenter;
 
 /**
@@ -11,7 +12,7 @@ import com.superhaha.sinaweibo.pro.discover.presenter.DiscoverPresenter;
  * Created by Administrator on 2017/11/7.
  */
 
-public class PublishFragment extends BaseFragment<DiscoverPresenter> {
+public class PublishFragment extends BaseFragment<DiscoverPresenter,BaseView> {
 
     private DiscoverPresenter discoverPresenter;
 
