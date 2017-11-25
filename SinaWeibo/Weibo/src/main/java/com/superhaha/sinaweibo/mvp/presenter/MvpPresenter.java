@@ -10,7 +10,7 @@ import com.superhaha.sinaweibo.mvp.view.MvpView;
 public interface MvpPresenter<V extends MvpView> {
 
 //    绑定view层
-    public void attachView(V View);
+    public void attachView(V view);
 
 //    解除绑定
     public void detachView();

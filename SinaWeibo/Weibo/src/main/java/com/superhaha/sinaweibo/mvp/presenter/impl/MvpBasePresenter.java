@@ -12,7 +12,7 @@ public abstract class MvpBasePresenter<V extends MvpView> implements MvpPresente
     private V view;
 
     @Override
-    public void attachView(V View) {
+    public void attachView(V view) {
         this.view = view;
     }
 

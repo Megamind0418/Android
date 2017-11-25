@@ -55,7 +55,6 @@ public class HomeFragment extends BaseFragment<LoginPresenter,LoginView> impleme
     public void onResult(String data) {
         if (TextUtils.isEmpty(data)) {
             ToastUtil.showToast(getContext(), "Login Failed");
-            Log.i("zhang", data);
         } else {
             ToastUtil.showToast(getContext(),data);
         }
