@@ -19,7 +19,9 @@ public class LoginModel extends BaseModel {
 
 //    服务器地址---接口地址
     private String getServerUrl(){
-        return "http://192.168.1.102:8080/Dream_6_2_LoginServer/LoginServlet";
+//        return "http://192.168.1.102:8080/Dream_6_2_LoginServer/LoginServlet";
+        return "http://192.168.1.94:8080/Dream_6_2_LoginServer/LoginServlet";
+
     }
 
     public void login(String username, String password, HttpUtils.OnHttpResultListener onHttpResultListener) {
