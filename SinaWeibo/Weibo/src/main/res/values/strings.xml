@@ -5,4 +5,9 @@
     <string name="tabbar_message_text">消息</string>
     <string name="tabbar_discover_text">发现</string>
     <string name="tabbar_profile_text">我</string>
+
+
+    <string name="register_text">注册</string>
+
+    <string name="login_text">登录</string>
 </resources>

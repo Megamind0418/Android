@@ -15,7 +15,7 @@ import com.superhaha.sinaweibo.R;
 
 public class DefaultNavigation extends AbsNavigation<DefaultNavigation.Builder.DefaultNavigationParams> {
 
-    public DefaultNavigation(Builder.DefaultNavigationParams params) {
+    protected DefaultNavigation(Builder.DefaultNavigationParams params) {
         super(params);
     }
 
@@ -108,7 +108,7 @@ public class DefaultNavigation extends AbsNavigation<DefaultNavigation.Builder.D
             return this;
         }
 
-        public DefaultNavigation.Builder setRightColor(int rightTextColor) {
+        public DefaultNavigation.Builder setRightTextColor(int rightTextColor) {
             this.params.rightTextColor = rightTextColor;
             return this;
         }
@@ -129,8 +129,10 @@ public class DefaultNavigation extends AbsNavigation<DefaultNavigation.Builder.D
         }
 
         @Override
-        public AbsNavigation create() {
-            return null;
+        public DefaultNavigation create() {
+            DefaultNavigation defaultNavigation = new DefaultNavigation(params);
+            defaultNavigation.createAndBind();
+            return defaultNavigation;
         }
 
         public static class DefaultNavigationParams extends NavigationParams {
