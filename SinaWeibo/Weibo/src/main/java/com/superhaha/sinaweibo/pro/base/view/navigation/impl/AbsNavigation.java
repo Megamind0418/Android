@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 
+import com.superhaha.sinaweibo.R;
 import com.superhaha.sinaweibo.pro.base.view.navigation.INavigation;
 
 /**
@@ -26,6 +27,18 @@ public abstract class AbsNavigation<P extends AbsNavigation.Builder.NavigationPa
    public P getParams(){
        return params;
    }
+
+    public View findViewById(int id) {
+        return contentView.findViewById(id);
+    }
+
+    public String getString(int id) {
+        return params.context.getResources().getString(id);
+    }
+
+    public int getColor(int id) {
+        return params.context.getResources().getColor(id);
+    }
 
     @Override
     public void createAndBind() {
